@@ -185,7 +185,7 @@ async function saveAndPrint() {
     const token = localStorage.getItem("token");
     console.log("order",order);
     
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch("https://krishna-cake-backend.onrender.com/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -218,14 +218,14 @@ async function saveAndPrint() {
 function printOrder(id) {
   const token = localStorage.getItem("token");
   window.open(
-    `http://localhost:5000/api/orders/${id}/print?token=${token}`,
+    `https://krishna-cake-backend.onrender.com/api/orders/${id}/print?token=${token}`,
     "_blank"
   );
 }
 
 // function loadOrders() {
 //   showScreen("screen-history")
-//   fetch("http://localhost:5000/api/orders", {
+//   fetch("https://krishna-cake-backend.onrender.com/api/orders", {
 //     method: "POST",
 //     headers: {
 //       "Content-Type": "application/json",
@@ -284,7 +284,7 @@ function takeNewOrder(){
 
 function printOrder(orderId) {
   window.open(
-    `http://localhost:5000/api/orders/${orderId}/print?token=${localStorage.getItem("token")}`,
+    `https://krishna-cake-backend.onrender.com/api/orders/${orderId}/print?token=${localStorage.getItem("token")}`,
     "_blank"
   );
 }

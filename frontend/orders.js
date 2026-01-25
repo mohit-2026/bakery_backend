@@ -15,7 +15,7 @@ async function fetchOrders(reset = false) {
     orders = [];
   }
 
-  const res = await fetch("http://localhost:5000/api/orders/list", {
+  const res = await fetch("https://krishna-cake-backend.onrender.com/api/orders/list", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +45,7 @@ async function fetchOrders(reset = false) {
 async function loadOrders() {
   const token = localStorage.getItem("token");
 
-  const res = await fetch("http://localhost:5000/api/orders", {
+  const res = await fetch("https://krishna-cake-backend.onrender.com/api/orders", {
     headers: {
       "Authorization": "Bearer " + token
     }
@@ -96,7 +96,7 @@ async function approveOrder(orderId) {
   const token = localStorage.getItem("token");
 
   const res = await fetch(
-    `http://localhost:5000/api/orders/${orderId}/status`,
+    `https://krishna-cake-backend.onrender.com/api/orders/${orderId}/status`,
     {
       method: "PUT",
       headers: {
@@ -122,7 +122,7 @@ function takeNewOrder() {
 function printOrder(id) {
   const token = localStorage.getItem("token");
   window.open(
-    `http://localhost:5000/api/orders/${id}/print?token=${token}`,
+    `https://krishna-cake-backend.onrender.com/api/orders/${id}/print?token=${token}`,
     "_blank"
   );
 }
