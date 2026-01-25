@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head><link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="print.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🍰 Bakery Orders</h1>
+    </header>
+
+    <main>
+      <!-- your screens here -->
+    
+
+<!-- <head>
+  <title>Bakery Orders</title>
+</head>
+<body>
+  <h2>Create Cake Order</h2>
+
+  <input id="variety" placeholder="Variety (Sponge/Chocolate/Fresh Cream/Eggless)" /><br><br>
+<input id="flavor" placeholder="Flavour" /><br><br>
+<input id="weight" placeholder="Required Weight (kg)" /><br><br>
+<input id="deliveryDate" placeholder="Delivery Date" /><br><br>
+<input id="deliveryTime" placeholder="Timings" /><br><br>
+<input id="advance" placeholder="Advance Amount" /><br><br>
+<input id="shape" placeholder="Shape" /><br><br>
+
+
+  <button onclick="createOrder()">Save Order</button>
+
+  <h3 id="result"></h3>
+<div id="screen-category" class="screen active"> -->
+  <div id="screen-category" class="screen active">
+  <h2>What would you like to order?</h2>
+
+  <div class="btn-grid">
+    <button onclick="selectCategory('cake')">🍰 Cakes</button>
+    <button disabled>🍬 Sweets</button>
+    <!-- <button onclick="loadOrders()">Load All Orders</button> -->
+  </div>
+</div>
+
+
+<div id="screen-cake-type" class="screen">
+  <h2>Select Cake Type</h2>
+
+  <div class="btn-grid">
+    <button onclick="selectCakeType('Sponge Cake')">Sponge Cake</button>
+    <button onclick="selectCakeType('Chocolate Cake')">Chocolate Cake</button>
+    <button onclick="selectCakeType('Fresh Cream Cake')">Fresh Cream Cake</button>
+    <button onclick="selectCakeType('Eggless Cake')">Eggless Cake</button>
+    <!-- <button onclick="back()">back</button> -->
+  </div>
+</div>
+<div id="screen-flavor" class="screen">
+  <h2>Select Flavor</h2>
+
+  <div id="flavor-buttons" class="btn-grid">
+    <!-- Buttons injected by JS -->
+  </div>
+  <div id="flavor-buttons" class="btn-grid">
+    <button onclick="back()">⬅ Back</button>
+  </div>
+</div>
+<div id="screen-details" class="screen">
+  <h2>Order Details</h2>
+
+  <label>Weight</label>
+  <select id="weight">
+    <option>0.5 kg</option>
+    <option>1 kg</option>
+    <option>1.5 kg</option>
+    <option>2 kg</option>
+  </select>
+
+  <label>Shape</label>
+  <select id="shape">
+    <option value="Round">Round</option>
+    <option value="Square">Square</option>
+    <option value="Heart">Heart</option>
+  </select>
+  <label>Delivery Date</label>
+  <input type="date" id="deliveryDate">
+
+  <label>Delivery Time</label>
+  <input type="time" id="deliveryTime">
+
+  <label>Advance Amount</label>
+  <input type="number" id="advance">
+
+  <label>Message on Cake (optional)</label>
+  <input type="text" id="message">
+
+  <button onclick="back()">⬅ Back</button>
+  <button onclick="goToReview()">Next</button>
+</div>
+<div id="screen-review" class="screen">
+  <h2>Review Order</h2>
+
+  <div id="review-summary"></div>
+
+  <button id="edit-btn" onclick="goBack()">Edit</button>
+  <button id="print-btn" onclick="saveAndPrint()">Print & Save</button>
+  <button onclick="takeNewOrder()">New Order</button>
+  <div id="flavor-buttons" class="btn-grid">
+    <button onclick="loadOrders()">load orders</button>
+  </div>
+</div>
+<div id="screen-history" class="screen">
+  <h2>Order History</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cake</th>
+        <th>Flavor</th>
+        <th>Date</th>
+        <th>Print</th>
+      </tr>
+    </thead>
+    <tbody id="order-table"></tbody>
+  </table>
+</div>
+<!-- <div id="screen-egg" class="screen">
+  <h2>Select Type</h2>
+
+  <div class="btn-grid">
+    <button onclick="selectEggType('Egg')">🥚 Egg</button>
+    <button onclick="selectEggType('Eggless')">🚫🥚 Eggless</button>
+  </div>
+</div> -->
+<div id="print-area" style="display:none">
+  <div class="receipt">
+    <h3>🍰 Bakery Name</h3>
+    <hr>
+    <p><b>Type:</b> ${order.eggType}</p>
+    <p><b>Flavor:</b> ${order.flavor}</p>
+    <p><b>Weight:</b> ${order.weight}</p>
+    <p><b>Date:</b> ${order.date}</p>
+    <hr>
+    <p>Thank You 🙏</p>
+  </div>
+</div>
+<div id="screen-orders" class="screen">
+  <h2>Previous Orders</h2>
+  <div id="orders-list"></div>
+</div>
+
+
+  <script src="app.js"></script>
+</main>
+  </div>
+</body>
+</html>

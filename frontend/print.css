@@ -1,0 +1,25 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #print-area, #print-area * {
+    visibility: visible;
+  }
+
+  #print-area {
+    width: 80mm;
+    font-size: 12px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .receipt {
+    text-align: center;
+  }
+
+  .receipt hr {
+    border: 1px dashed #000;
+  }
+}

@@ -1,0 +1,122 @@
+body {
+  margin: 0;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
+
+/* Top brown header */
+.app-header {
+  background: #7b3f00;
+  color: white;
+  padding: 18px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Main screen */
+.screen-history {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Header row */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.header input {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+/* Buttons */
+button {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button.primary {
+  background: #f4d9a6;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  background: #eee;
+}
+
+.tab.active {
+  background: #000;
+  color: white;
+}
+
+/* Card look */
+.card {
+  background: #fff8ee;
+  border-radius: 16px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* Table */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.orders-table th {
+  background: #fbe7c0;
+}
+
+/* Action buttons */
+button.approve {
+  background: #28a745;
+  color: white;
+}
+
+button.print {
+  background: #007bff;
+  color: white;
+}
+
+/* Load more */
+.load-more {
+  text-align: center;
+  margin-top: 15px;
+}

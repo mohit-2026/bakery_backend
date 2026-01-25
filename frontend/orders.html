@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Order History</title>
+  <link rel="stylesheet" href="orders.css">
+</head>
+<body>
+
+<div class="app-header">
+  🍰 Bakery Orders
+</div>
+
+<div class="screen screen-history">
+
+  <div class="header">
+    <h2>Order History</h2>
+
+    <div class="header-actions">
+      <input
+        type="number"
+        id="searchSerial"
+        placeholder="Search Serial No"
+        oninput="fetchOrders(true)"
+      />
+      <button class="primary" onclick="takeNewOrder()">+ New Order</button>
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button id="tab-pending" class="tab active" onclick="setStatus('pending')">
+      Pending
+    </button>
+    <button id="tab-approved" class="tab" onclick="setStatus('approved')">
+      Approved
+    </button>
+  </div>
+
+  <div class="card">
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>SL</th>
+          <th>Flavor</th>
+          <th>Weight</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="ordersTable"></tbody>
+    </table>
+  </div>
+
+  <div class="load-more">
+    <button onclick="fetchOrders()">Load More</button>
+  </div>
+
+</div>
+
+<script src="orders.js"></script>
+</body>
+</html>
