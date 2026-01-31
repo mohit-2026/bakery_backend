@@ -103,6 +103,7 @@ function goToReview() {
   order.date = document.getElementById("deliveryDate").value;
   order.time = document.getElementById("deliveryTime").value;
   order.advance = document.getElementById("advance").value;
+  order.eggType = document.getElementById("eggType").value;
   order.message = document.getElementById("message").value;
 
   renderReview();
@@ -124,6 +125,7 @@ function renderReview() {
       <p><strong>Date:</strong> ${order.date}</p>
       <p><strong>Time:</strong> ${order.time}</p>
       <p><strong>Advance:</strong> ₹${order.advance}</p>
+      <p><strong>EggType:</strong> ₹${order.eggType}</p>
       <p><strong>Message:</strong> ${order.message || "-"}</p>
     </div>
   `;
