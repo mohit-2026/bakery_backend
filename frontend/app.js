@@ -12,6 +12,7 @@ const order = {
   date: "",
   time: "",
   advance: "",
+  eggType:"",
   message: ""
 };
 

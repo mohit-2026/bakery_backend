@@ -185,12 +185,63 @@ router.get("/:id/print", auth(["owner", "staff"]), async (req, res) => {
 <head>
 <title>Cake Order</title>
 <style>
-@page { size: 80mm auto; margin: 5mm; }
-body { font-family: Arial; width: 80mm; }
-.row { display:flex; margin:4px 0; }
-.label { width:40%; font-weight:bold; }
-.value { width:60%; border-bottom:1px dotted #000; }
-hr { margin:10px 0; }
+  body {
+    font-family: Arial, sans-serif;
+    width: 80mm;            /* Thermal paper width */
+    margin: 0 auto;
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  h3 {
+    font-size: 15px;
+    margin: 4px 0;
+    font-weight: bold;
+  }
+
+  h4 {
+    font-size: 13px;
+    margin: 4px 0;
+    font-weight: bold;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 6px 0;
+  }
+
+  .row {
+    display: flex;
+    margin: 4px 0;
+  }
+
+  .label {
+    width: 45%;
+    font-weight: bold;
+  }
+
+  .value {
+    width: 55%;
+    text-align: left;
+  }
+
+  .footer {
+    margin-top: 10px;
+    font-size: 11px;
+    line-height: 1.4;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  @media print {
+    @page {
+      size: 80mm auto;
+      margin: 0;
+    }
+  }
 </style>
 </head>
 
@@ -211,16 +262,49 @@ ${renderReceipt(order)}
 
 function renderReceipt(order) {
   return `
-  <h3 style="text-align:center">Sri Krishna Cake Palace</h3>
+  <div style="text-align:center;">
+      <h3 style="margin:4px 0;">SRI KRISHNA CAKE PALACE</h3>
+
+      <div style="font-size:12px; line-height:1.4;">
+        Sri Krishna Complex, Hesaraghatta Road,<br/>
+        T-Dasarahalli, Bengaluru - 57
+      </div>
+
+      <div style="font-size:12px; margin-top:4px;">
+        Ph: 9845242323 &nbsp; | &nbsp; GSTIN: 29AFTPN7326N1ZF
+      </div>
+
+      <hr style="margin:8px 0;">
+
+      <h4 style="margin:4px 0;">CAKE ORDER FORM</h4>
+    </div>
   <div class="row"><div class="label">SL No</div><div class="value">${order.serialNo}</div></div>
   <div class="row"><div class="label">Cake</div><div class="value">${order.cakeType}</div></div>
   <div class="row"><div class="label">Flavor</div><div class="value">${order.flavor}</div></div>
   <div class="row"><div class="label">Shape</div><div class="value">${order.shape}</div></div>
   <div class="row"><div class="label">Weight</div><div class="value">${order.weight} kg</div></div>
+  ${
+      order.eggType === "eggless"
+        ? `<div class="row"><div class="label">Egg Type</div><div class="value">Eggless</div></div>`
+        : ``
+    }
   <div class="row"><div class="label">Advance</div><div class="value">₹${order.advance}</div></div>
   <div class="row"><div class="label">Delivery-Date</div><div class="value">${order.date}</div></div>
   <div class="row"><div class="label">Delivery-Time</div><div class="value">${order.time}</div></div>
   <div class="row"><div class="label">Delivery-Message</div><div class="value">${order.message ? order.message : ""}</div></div>
+  <div class="footer">
+  <hr>
+
+  <p>1. Minimum 50% advance should be paid.</p>
+  <p>2. Cake must be collected within 12 hours of delivery time.</p>
+  <p>3. Advance amount is non-refundable.</p>
+  <p>4. This order slip must be produced at the time of delivery.</p>
+
+  <p class="center" style="margin-top:6px;">
+    Thank you for choosing<br/>
+    <b>SRI KRISHNA CAKE PALACE</b>
+  </p>
+</div>
   `;
 }
 

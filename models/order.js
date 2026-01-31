@@ -62,6 +62,7 @@ const orderSchema = new mongoose.Schema({
   advance: Number,
   date: String,
   time: String,
+  eggType: String,
   message:String,
   status: { type: String, default: "pending" },
   createdBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }

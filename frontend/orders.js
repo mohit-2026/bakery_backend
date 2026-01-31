@@ -70,22 +70,38 @@ function renderOrders() {
   table.innerHTML = "";
 
   orders.forEach(o => {
-    table.innerHTML += `
-      <tr>
-        <td>${o.serialNo}</td>
-        <td>${o.flavor}</td>
-        <td>${o.weight} kg</td>
-        <td>${new Date(o.createdAt).toLocaleDateString()}</td>
-        <td>
-          ${
-            o.status === "pending"
-              ? `<button class="approve" onclick="approveOrder('${o._id}')">Approve</button>`
-              : `<button class="print" onclick="printOrder('${o._id}')">Print</button>`
-          }
-        </td>
-      </tr>
+  let actions = "";
+
+  if (o.status === "pending") {
+    actions = `
+      <button class="print" onclick="printOrder('${o._id}')">Print</button>
+      <button class="cancel" onclick="cancelOrder('${o._id}')">Cancel</button>
     `;
-  });
+  } 
+  else if (o.status === "approved") {
+    actions = `
+      <button class="print" onclick="printOrder('${o._id}')">Print</button>
+    `;
+  } 
+  else if (o.status === "cancelled") {
+    actions = `<span style="color:red;">Cancelled</span>`;
+  }
+
+  table.innerHTML += `
+    <tr>
+      <td>${o.serialNo}</td>
+      <td>${o.cakeType || "-"}</td>
+      <td>${o.eggType || "-"}</td>
+      <td>${o.flavor || "-"}</td>
+      <td>${o.shape || "-"}</td>
+      <td>${o.weight} kg</td>
+      <td>₹${o.advance || 0}</td>
+      <td>${o.status}</td>
+      <td>${new Date(o.createdAt).toLocaleDateString()}</td>
+      <td>${actions}</td>
+    </tr>
+  `;
+});
 }
 
 
@@ -104,6 +120,32 @@ async function approveOrder(orderId) {
         "Authorization": "Bearer " + token
       },
       body: JSON.stringify({ status: "approved" })
+    }
+  );
+
+  if (!res.ok) {
+    alert("Failed to approve order");
+    return;
+  }
+
+  // Refresh list after approval
+  fetchOrders(true);
+}
+
+async function cancelOrder(orderId) {
+  if (!confirm("cancel this order?")) return;
+
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(
+    `https://krishna-cake-backend.onrender.com/api/orders/${orderId}/status`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({ status: "cancelled" })
     }
   );
 
