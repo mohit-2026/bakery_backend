@@ -110,6 +110,11 @@ button.approve {
   color: white;
 }
 
+button.cancel {
+  background: #ff0000;
+  color: white;
+}
+
 button.print {
   background: #007bff;
   color: white;

@@ -282,7 +282,7 @@ function loadOrders() {
   window.location.href = "orders.html";
 }
 function takeNewOrder(){
- window.location.reload
+ window.location.href = "dashboard.html";
 }
 
 function printOrder(orderId) {

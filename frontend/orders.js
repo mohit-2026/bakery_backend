@@ -75,6 +75,7 @@ function renderOrders() {
   if (o.status === "pending") {
     actions = `
       <button class="print" onclick="printOrder('${o._id}')">Print</button>
+      <button class="approve" onclick="approveOrder('${o._id}')">Approve</button>
       <button class="cancel" onclick="cancelOrder('${o._id}')">Cancel</button>
     `;
   } 
